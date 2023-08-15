@@ -1,0 +1,6 @@
+.ipynb_checkpoints
+
+cifar10
+
+*.DS_Store
+*.pyc
