@@ -8,6 +8,9 @@
 <br><br>
 
 # CNN
-- Custom CNN
-- AlexNet
+### Custom CNN
+<br>
+
+### AlexNet 
+- ImageNet Classification with Deep Convolutional Neural Networks
 
