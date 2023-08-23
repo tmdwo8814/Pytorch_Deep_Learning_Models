@@ -9,4 +9,5 @@
 
 # CNN
 - Custom CNN
+- AlexNet
 
