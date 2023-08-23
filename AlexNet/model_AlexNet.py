@@ -44,10 +44,10 @@ class AlexNet(nn.Module):
         )
 
         self.fclayer = nn.Sequential(
-            nn.Dropout(0.5, inplace=True),
+            nn.Dropout(0.5),
             nn.Linear(6 * 6 * 256, 4096),
             nn.ReLU(),
-            nn.Dropout(0.5, inplace=True),
+            nn.Dropout(0.5),
             nn.Linear(4096, 4096),
             nn.ReLU(),
             nn.Linear(4096, 1000)
@@ -70,7 +70,7 @@ class AlexNet(nn.Module):
 # CIFAR10 ver
 class CustomAlexNet(nn.Module):
     def __init__(self):
-        super(AlexNet, self).__init__()
+        super(CustomAlexNet, self).__init__()
 
         self.conv1 = nn.Sequential(
             nn.Conv2d(3, 48, 4, 2),
@@ -93,21 +93,21 @@ class CustomAlexNet(nn.Module):
         )
         """
         (7 - 2 + 2*2)/1 + 1 = 10 * 10 * 100
-        (10 - 2)/1 = 8 * 8 * 100
+        (10 - 2)/1  + 1= 9 * 9 * 100
         """
         self.conv3 = nn.Sequential(
             nn.Conv2d(100, 150, 3, 1, 1),
             nn.ReLU()
         )
         """
-        (8 - 3 + 2*1)/1 + 1 = 8 * 8 * 150
+        (9 - 3 + 2*1)/1 + 1 = 9 * 9 * 150
         """
         self.conv4 = nn.Sequential(
             nn.Conv2d(150, 150, 3, 1, 1),
             nn.ReLU()
         )
         """
-        (8 - 3 + 2*1)/1 + 1 = 8 * 8 * 150
+        (9 - 3 + 2*1)/1 + 1 = 9 * 9 * 150
         """
         self.conv5 = nn.Sequential(
             nn.Conv2d(150, 48, 3, 1, 1),
@@ -115,15 +115,15 @@ class CustomAlexNet(nn.Module):
             nn.MaxPool2d(2, 1)
         )
         """
-        (8 - 3 + 2*1)/1 + 1 = 8 * 8 * 48
-        (8 - 2)/1 = 6 * 6 * 48 = 1728
+        (9 - 3 + 2*1)/1 + 1 = 9 * 9 * 48
+        (9 - 2)/1 + 1 = 8 * 8 * 48 = 3072
         """
 
         self.fclayer = nn.Sequential(
-            nn.Dropout(0.5, inplace=True),
-            nn.Linear(6 * 6 * 48, 864),
+            nn.Dropout(0.5),
+            nn.Linear(8 * 8 * 48, 864),
             nn.ReLU(),
-            nn.Dropout(0.5, inplace=True),
+            nn.Dropout(0.5),
             nn.Linear(864, 864),
             nn.ReLU(),
             nn.Linear(864, 10)
@@ -136,7 +136,7 @@ class CustomAlexNet(nn.Module):
         x = self.conv4(x)
         x = self.conv5(x)
 
-        x = x.view(-1, 6 * 6 * 48)
+        x = x.view(-1, 8 * 8 * 48)
 
         x = self.fclayer(x)
 
