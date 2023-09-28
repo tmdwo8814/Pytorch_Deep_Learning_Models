@@ -1,5 +1,5 @@
 """
-'ImageNet Classification with Deep Convolutional Neural Networks'
+ImageNet Classification with Deep Convolutional Neural Networks 2012
 
 - Activation function : ReLU
 - cross-GPU parallelization
